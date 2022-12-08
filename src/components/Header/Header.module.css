@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 0.5rem;
+}
+
+.lightIcon {
+  font-size: 1.4rem;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.lightIcon:hover {
+  transform: scale(1.1);
+}
+
+.filters {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.filter {
+  position: relative;
+  font-weight: 700;
+  opacity: 0.5;
+  padding: 0.4rem 0.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.filter:hover {
+  transform: scale(1.1);
+}
+
+.filter.selected::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  bottom: 3px;
+  width: 100%;
+  height: 2px;
+  background-color: hotpink;
+}
