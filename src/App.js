@@ -4,17 +4,16 @@ import Header from './components/Header/Header';
 import TodoList from './components/TodoList/TodoList';
 
 function App() {
-  const [selected, setSelected] = useState('All');
+  const [filterState, setFilterState] = useState('All');
 
   const filterChange = (filter) => {
-    setSelected(filter);
+    setFilterState(filter);
   };
 
-  console.log(selected);
   return (
     <div className='app'>
-      <Header filterChange={filterChange} selected={selected} />
-      <TodoList />
+      <Header filterChange={filterChange} filterState={filterState} />
+      <TodoList filterState={filterState} />
     </div>
   );
 }

@@ -1,8 +1,6 @@
 .app {
-  width: 60%;
-  height: 50%;
+  width: 100%;
+  max-width: 500px;
+  height: 70%;
   background-color: aqua;
-
-  display: flex;
-  flex-direction: column;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { HiOutlineMoon } from 'react-icons/hi';
 import styles from './Header.module.css';
 
-export default function Header({ filterChange, selected }) {
+export default function Header({ filterChange, filterState }) {
   const filters = ['All', 'Active', 'Completed'];
 
   return (
@@ -11,7 +11,7 @@ export default function Header({ filterChange, selected }) {
       <div className={styles.filters}>
         {filters.map((filter, index) => (
           <div
-            className={`${styles.filter} ${filter === selected ? styles.selected : ''}`}
+            className={`${styles.filter} ${filter === filterState ? styles.selected : ''}`}
             key={index}
             onClick={() => filterChange(filter)}
           >

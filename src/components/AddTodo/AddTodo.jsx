@@ -6,7 +6,7 @@ export default function AddTodo({ updateTodos }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim() === '') return;
-    updateTodos({ id: `${Date.now()}`, text, status: 'active' });
+    updateTodos({ id: `${Date.now()}`, text, status: 'Active' });
     setText('');
   };
 
