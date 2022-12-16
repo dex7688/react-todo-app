@@ -6,14 +6,12 @@ export const ThemeContextProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') || 'light');
 
   useEffect(() => {
+    localStorage.setItem('theme', darkMode);
+
     if (darkMode === 'dark') {
       const bodyEl = document.querySelector('body');
       bodyEl.classList.add('dark');
     }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('theme', darkMode);
   }, [darkMode]);
 
   const toggleDarkMode = () => {
