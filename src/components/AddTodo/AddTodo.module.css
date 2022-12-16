@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  min-height: 3.4rem;
+  padding: 0.5rem 0.6rem;
+}
+
+.input {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-left: 1rem;
+  flex: 1 1 auto;
+  color: var(--color-text);
+  outline: none;
+  border: 0;
+  border-radius: 12px 0 0 12px;
+  background-color: transparent;
+  color: var(--color-text);
+  border: var(--color-add-border);
+}
+
+.input::placeholder {
+  color: var(--color-text);
+  opacity: 0.4;
+}
+
+.button {
+  font-size: 1.1rem;
+  width: 5rem;
+  color: var(--color-text);
+  font-weight: bold;
+  border-radius: 0 12px 12px 0;
+  background-color: transparent;
+  border: var(--color-add-border);
+  border-left: 0;
+  cursor: pointer;
+}

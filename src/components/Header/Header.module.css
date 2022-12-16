@@ -1,13 +1,16 @@
 .container {
+  min-height: 3.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-text);
+  border-bottom: var(--color-border);
 }
 
 .lightIcon {
-  font-size: 1.4rem;
-  transition: all 0.2s ease-out;
+  font-size: 1.8rem;
+  transition: transform 0.2s ease;
   cursor: pointer;
 }
 
@@ -22,11 +25,16 @@
 
 .filter {
   position: relative;
+  font-size: 1.1rem;
   font-weight: 700;
   opacity: 0.5;
   padding: 0.4rem 0.2rem;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: opacity, transform 0.2s ease-out;
+}
+
+.filter.selected {
+  opacity: 1;
 }
 
 .filter:hover {
@@ -40,5 +48,5 @@
   bottom: 3px;
   width: 100%;
   height: 2px;
-  background-color: hotpink;
+  background-color: var(--color-text);
 }

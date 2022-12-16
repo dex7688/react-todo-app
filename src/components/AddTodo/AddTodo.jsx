@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import styles from './AddTodo.module.css';
 
-export default function AddTodo({ updateTodos }) {
+export default function AddTodo({ onAdd }) {
   const [text, setText] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim() === '') return;
-    updateTodos({ id: `${Date.now()}`, text, status: 'Active' });
+    onAdd({ id: `${Date.now()}`, text, status: 'Active' });
     setText('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.container}>
       <input
+        className={styles.input}
         type='text'
         placeholder='Add Todo'
         value={text}
@@ -20,7 +22,9 @@ export default function AddTodo({ updateTodos }) {
           setText(e.target.value);
         }}
       />
-      <button type='submit'>Add</button>
+      <button className={styles.button} type='submit'>
+        Add
+      </button>
     </form>
   );
 }

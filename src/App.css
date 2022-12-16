@@ -1,6 +1,12 @@
 .app {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   height: 70%;
-  background-color: aqua;
+  background-color: var(--color-todolist-bg);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  border: var(--color-border);
+
+  display: flex;
+  flex-direction: column;
 }

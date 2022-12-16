@@ -1,11 +1,21 @@
 :root {
-  --color-bg-dark: #f5f5f5;
-  --color-bg: #fdfffd;
-  --color-grey: #d1d1d1;
-  --color-text: #22243b;
-  --color-accent: #f16e03;
-  --color-white: white;
-  --color-scrollbar: #aaa7a7;
+  --color-bg: url('./images/light-background.svg');
+  --color-todolist-bg: #bebbff;
+  --color-border: 1px solid #464555;
+  --color-text: #232a60;
+  --color-add-border: 1.8px solid #464555;
+  --color-icon-bg: #8086f1;
+  --color-accent: #666fd7;
+}
+
+body.dark {
+  --color-bg: radial-gradient(circle, #111111, #1f2020, #2d2f2f, #3c3f3e, #4e4f4c);
+  --color-todolist-bg: #393939;
+  --color-border: 1px solid #969696;
+  --color-text: #c9c9c9;
+  --color-add-border: 1.8px solid #969696;
+  --color-icon-bg: #5a5a5a;
+  --color-accent: #bfbfbf;
 }
 
 body {
@@ -14,14 +24,16 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: var(--color-bg);
+  background-size: cover;
   width: 100vw;
   height: 100vh;
+  accent-color: var(--color-accent);
 }
 
 #root {
   width: 100%;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,4 +52,8 @@ code {
 ol,
 ul {
   list-style: none;
+}
+
+button {
+  background: transparent;
 }

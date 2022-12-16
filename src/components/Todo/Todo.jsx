@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import styles from './Todo.module.css';
 import { FiTrash2 } from 'react-icons/fi';
 
-export default function Todo({ id, text, setTodos, todos, status }) {
-  // checkbox 컨트롤 하기 위한 state
-  const [checked, setChecked] = useState(false);
+export default function Todo({ item, onDelete, onStatusChange }) {
+  const handleDeleteClick = () => {
+    onDelete(item);
+  };
 
-  // checkbox의 상태를 변경하면 item의 status를 변경
-  // 'Acive' <---> 'Completed'
-  const handleCheck = () => {
-    setChecked(!checked);
-    const changed = todos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, status: checked ? 'Active' : 'Completed' };
-      } else {
-        return todo;
-      }
-    });
-    setTodos(changed);
+  const handleCheckBoxChange = () => {
+    onStatusChange(item);
   };
 
   return (
-    <li>
-      <input type='checkbox' id={id} onChange={handleCheck} checked={status === 'Completed'} />
-      <label htmlFor={id}>{text}</label>
-      <span>
-        <FiTrash2 />
+    <li className={styles.container}>
+      <input
+        className={styles.checkBox}
+        type='checkbox'
+        id={item.id}
+        checked={item.status === 'Completed'}
+        onChange={handleCheckBoxChange}
+      />
+      <label className={styles.text} htmlFor={item.id}>
+        {item.text}
+      </label>
+      <span className={styles.iconWrapper} onClick={handleDeleteClick}>
+        <FiTrash2 className={styles.icon} />
       </span>
     </li>
   );

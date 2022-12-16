@@ -1,14 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import styles from './TodoList.module.css';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
-import styles from './TodoList.module.css';
+
+const getTodosFromLocalStorage = JSON.parse(localStorage.getItem('todos'));
 
 export default function TodoList({ filterState }) {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(getTodosFromLocalStorage || []);
 
-  // todos 업데이트를 위해 props 전달
-  const updateTodos = (updated) => {
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  // update todos
+  const handleAddTodos = (updated) => {
     setTodos([...todos, updated]);
+  };
+
+  // change todo status
+  const handleChangeStatus = (changed) => {
+    setTodos(
+      todos.map((todo) => {
+        if (changed.id === todo.id) {
+          return { ...todo, status: changed.status === 'Active' ? 'Completed' : 'Active' };
+        } else {
+          return todo;
+        }
+      })
+    );
+  };
+
+  // delete todos
+  const handleDeleteTodos = (deleted) => {
+    setTodos(todos.filter((todo) => todo.id !== deleted.id));
   };
 
   // todos에 filter와 일치하는 item 배열
@@ -17,11 +41,11 @@ export default function TodoList({ filterState }) {
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
-        {filteredList.map((todo) => (
-          <Todo key={todo.id} id={todo.id} text={todo.text} status={todo.status} setTodos={setTodos} todos={todos} />
+        {filteredList.map((item) => (
+          <Todo key={item.id} item={item} onDelete={handleDeleteTodos} onStatusChange={handleChangeStatus} />
         ))}
       </ul>
-      <AddTodo updateTodos={updateTodos} />
+      <AddTodo onAdd={handleAddTodos} />
     </div>
   );
 }
